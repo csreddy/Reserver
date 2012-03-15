@@ -1,0 +1,10 @@
+module ReservationsHelper
+
+# RELEASE 
+def release_reservation(reservation)
+@reservation = Reservation.find(reservation)
+@reservation.reserve_from = ""
+#redirect_to @reservation
+end
+
+end

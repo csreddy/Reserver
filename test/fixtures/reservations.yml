@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  machine_name: MyString
+  machine_platform: MyString
+  machine_reserver: MyString
+  reserve_from: 2012-03-11
+  reserve_to: 2012-03-11
+  reserve_status: false
+
+two:
+  machine_name: MyString
+  machine_platform: MyString
+  machine_reserver: MyString
+  reserve_from: 2012-03-11
+  reserve_to: 2012-03-11
+  reserve_status: false

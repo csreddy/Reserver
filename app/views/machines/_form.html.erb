@@ -1,0 +1,10 @@
+<%= simple_form_for @machine do |f| %>
+  <legend><%= controller.action_name.capitalize %> Machine</legend>
+  <%= f.input :name %>
+  <%= f.input :platform,  :collection => ['Linux', 'Mac', 'Windows'], :include_blank => false %>
+  <%= f.input :user,  :collection => User.all(:order => 'name') %>
+ <div class="form-actions">
+     <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', reservations_path, :class => 'btn' %>
+    </div>
+<% end %>

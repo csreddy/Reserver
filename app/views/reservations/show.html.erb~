@@ -1,0 +1,39 @@
+<h1>Reservation</h1>
+<br>
+<p>
+  <b>Machine name: </b>
+  <%= @reservation.machine_name %>
+</p>
+
+<p>
+  <b>Machine platform: </b>
+  <%= @reservation.machine_platform %>
+</p>
+
+<p>
+  <b>Machine reserver: </b>
+  <%= @reservation.machine_reserver %>
+</p>
+
+<p>
+  <b>Reserve from: </b>
+  <%= @reservation.reserve_from %>
+  <%= @reservation.reserve_time_from.to_formatted_s(:long) %>
+</p>
+
+<p>
+  <b>Reserve to: </b>
+  <%= @reservation.reserve_to %>
+  <%= @reservation.reserve_time_to.to_formatted_s(:long) %><br>
+</p>
+
+<p>
+  <b>Reserve status</b><br>
+  <%= @reservation.reserve_status %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', reservations_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_reservation_path(@reservation), :class => 'btn' %>
+  <%= link_to 'Delete', reservation_path(@reservation), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

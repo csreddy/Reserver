@@ -1,0 +1,16 @@
+
+<%= simple_form_for @reservation do |f| %>
+  <legend>Make Reservation</legend>
+  <%= f.input :machine_name, :collection => Machine.all.collect{|machine| machine.name}, :disabled => false %>
+  <%= f.input :machine_platform, :collection => Platform.all.collect{|platform| platform.name}, :disabled => false %>
+  <%= f.input :machine_reserver, :collection => User.all.collect{|user| user.name} %>
+  <%= f.input :reserve_from, :label => "Reserve Start Date", :as => :date %>
+  <%= f.input :reserve_time_from, :label => "Time" %>
+  <%= f.input :reserve_to, :label => "Reservation End Date", :as => :date %> 
+  <%= f.input :reserve_time_to, :label => "Time" %> 
+  <%= f.input :time_zone, :priority => /US/, :label => "Time Zone" %> 
+  <div class="form-actions">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to 'Cancel', reservations_path, :class => 'btn' %>
+    </div>
+<% end %>	

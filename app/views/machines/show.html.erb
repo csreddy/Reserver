@@ -1,0 +1,27 @@
+<h1>Machine</h1>
+
+<p>
+  <b>Name</b><br>
+  <%= @machine.name %>
+</p>
+
+<p>
+  <b>Platform</b><br>
+  <%= @machine.platform %>
+</p>
+
+<p>
+  <b>User</b><br>
+  <%= @machine.user %>
+</p>
+
+<p>
+  <b>Status</b><br>
+  <%= @machine.status %>
+</p>
+
+<div class="form-actions">
+  <%= link_to 'Back', machines_path, :class => 'btn'  %>
+  <%= link_to 'Edit', edit_machine_path(@machine), :class => 'btn' %>
+  <%= link_to 'Delete', machine_path(@machine), :method => 'delete', :confirm => 'Are you sure?', :class => 'btn btn-danger' %>
+</div>

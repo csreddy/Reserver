@@ -1,0 +1,9 @@
+module ApplicationHelper
+
+def release_reservation(reservation)
+@reservation = Reservation.find(params[:reservation])
+@reservation.reserve_from = "2010-12-12"
+redirect_to @reservation
+end
+
+end
