@@ -76,15 +76,19 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
     @reservation.destroy
 
-#@reservation = Reservation.find(params[:reservation])
-@reservation.reserve_from = Date.now
-redirect_to @reservation
-
     respond_to do |format|
       format.html { redirect_to reservations_url }
       format.json { head :no_content }
     end
   end
 
+def release_reservation
+	@reservation = Reservation.find(params[:id])
+	@reservation.reserve_to = "2000-01-01"
 
+	respond_to do |format|
+	format.html { redirect_to @reservation, :notice => 'Reservation was successfully released' }
+	format.json { head :no_content}
+	end
+end
 end

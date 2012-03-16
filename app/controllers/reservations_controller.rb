@@ -82,5 +82,13 @@ class ReservationsController < ApplicationController
     end
   end
 
+def release_reservation
+	@reservation = Reservation.find(params[:id])
+	@reservation.reserve_to = "2000-01-01"
 
+	respond_to do |format|
+	format.html { redirect_to reservations_url, :notice => 'Reservation was successfully released' }
+	format.json { head :no_content}
+	end
+end
 end

@@ -4,6 +4,13 @@ class Reservation < ActiveRecord::Base
  
 # after_initialize :init
 
+def setnil
+self.reserve_from = Date.today
+self.reserve_to = Date.today
+self.reserve_time_from = DateTime.now
+self.reserve_time_to = DateTime.now
+end 
+
 def nilify_attributes!(except = nil)
     except ||= %w{id created_at updated_at}
     attribute_names.reject { |attr| except.include?(attr) }.each { |attr| self[attr] = nil }

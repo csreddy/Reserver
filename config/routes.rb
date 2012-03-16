@@ -1,4 +1,6 @@
 Reserver::Application.routes.draw do
+  get "release/release_reservation"
+
   resources :reservations
 
   resources :reserves
@@ -7,7 +9,7 @@ Reserver::Application.routes.draw do
 
   resources :users
 
-root :to => 'machines#index'  
+root :to => 'reservations#index'  
 resources :machines
 
   # The priority is based upon order of creation:
