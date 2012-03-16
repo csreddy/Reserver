@@ -58,6 +58,8 @@ class ReservationsController < ApplicationController
   # PUT /reservations/1.json
   def update
     @reservation = Reservation.find(params[:id])
+    @reservation.reserve_from = Time.now
+    @reservation.reserve_to = Time.now	
 
     respond_to do |format|
       if @reservation.update_attributes(params[:reservation])

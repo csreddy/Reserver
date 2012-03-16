@@ -58,7 +58,8 @@ class ReservationsController < ApplicationController
   # PUT /reservations/1.json
   def update
     @reservation = Reservation.find(params[:id])
-
+   @reservation.reserve_from = Time.now
+   @reservation.reserve_to = Time.now	
     respond_to do |format|
       if @reservation.update_attributes(params[:reservation])
         format.html { redirect_to @reservation, :notice => 'Reservation was successfully updated.' }
@@ -87,7 +88,7 @@ def release_reservation
 	@reservation.reserve_to = "2000-01-01"
 
 	respond_to do |format|
-	format.html { redirect_to @reservation, :notice => 'Reservation was successfully released' }
+	format.html { redirect_to reservations_url, :notice => 'Reservation was successfully released' }
 	format.json { head :no_content}
 	end
 end

@@ -1,14 +1,13 @@
 <h1>Reservations</h1>
+<div id='error'><%= flash[:error]="Message" %></div>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>ID</th>
       <th>Machine name</th>
       <th>Platform</th>
-      <th>Reserve From</th>
-      <th>Reserve Time From</th>
-      <th>Reserve To</th>
-      <th>Reserve Time To</th>
+      <th>Reserve From</th>    
+      <th>Reserve Till</th>
       <th>Reserved By</th>
       <th>Actions</th>
     </tr>
@@ -21,40 +20,23 @@
         <td><%= reservation.machine_platform %></td>
 	<td>
  <%#= Need to add 'and condition' for time along with date  and use 'Or check nil' -%>	
-	<% if (Date.today > reservation.reserve_to) %>
+	<% if (DateTime.now > reservation.reserve_to) %>
 	  <%= '-' %> 
 	<% else %>
-	<%= reservation.reserve_from %>
+	<%= reservation.reserve_from.to_formatted_s(:long) %>
 	<% end %>        
 	</td>       
 
-	
 	<td>
-	<% if (Date.today > reservation.reserve_to) %>
-	  <%= '-' %> 
-	<% else %>
-	<%=  reservation.reserve_time_from.localtime  %>
-	<% end %>        
-	</td>
-
-	<td>
-	<% if (Date.today > reservation.reserve_to) %>
+	<% if (DateTime.now > reservation.reserve_to) %>
 	 <%= '-' %> 
 	<% else %>
-	<%= reservation.reserve_to  %>
+	<%= reservation.reserve_to.to_formatted_s(:long)  %>
 	<% end %>        
 	</td>
 	
 	<td>
-	<% if (Date.today > reservation.reserve_to) %>
-	  <%= '-' %> 
-	<% else %>
-	<%= reservation.reserve_time_to.localtime %>
-	<% end %>        
-	</td>
-
-	<td>
-	<% if (Date.today > reservation.reserve_to) %>
+	<% if (DateTime.now > reservation.reserve_to) %>
 	  <%= '-' %> 
 	<% else %>
 	<%= reservation.machine_reserver  %>
@@ -62,11 +44,12 @@
 	</td>
 
 	<td>
-	<% if (Date.today > reservation.reserve_to) %>
+	<% if (DateTime.now > reservation.reserve_to) %>
 	 <%= link_to 'Reserve', edit_reservation_path(reservation), :class => 'btn btn-primary' %> 
 	<% else %>
 	<b><%= 'Reserved' %></b>
-	 <%= link_to 'Release', :controller => "release", :action => "release_reservation", :id => reservation,  :onclick => 'alert("Please no!")', :confirm => 'Are you sure?', :class => 'btn btn-mini-danger' %>    
+	<td><%= link_to 'Release',reservation_path(reservation), :class => 'btn btn-danger'  %></td>	
+ <%#= link_to '(Release)', :controller => "release", :action => "release_reservation", :id => reservation, :confirm => 'Are you sure?', :class => 'btn btn-mini-danger' %>    
 	<%#= link_to 'Reserved', reservation_path(reservation), :class => 'btn btn-mini btn-danger' -%> 
 	<% end %>
 	 <%#= link_to 'Reserve', edit_reservation_path(reservation), :class => 'btn btn-mini' -%>
@@ -76,5 +59,5 @@
     <% end %>
   </tbody>
 </table>
-
+<p>Time shown is in 24 Hr format</p>
 <%= link_to 'New', new_reservation_path, :class => 'btn btn-primary' %>

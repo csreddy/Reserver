@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312062006) do
+ActiveRecord::Schema.define(:version => 20120316061412) do
 
   create_table "machines", :force => true do |t|
     t.string   "name"
@@ -31,13 +31,11 @@ ActiveRecord::Schema.define(:version => 20120312062006) do
     t.string   "machine_name"
     t.string   "machine_platform"
     t.string   "machine_reserver"
-    t.date     "reserve_from"
-    t.date     "reserve_to"
+    t.datetime "reserve_from"
+    t.datetime "reserve_to"
     t.boolean  "reserve_status"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.time     "reserve_time_from"
-    t.time     "reserve_time_to"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
     t.string   "time_zone"
   end
 

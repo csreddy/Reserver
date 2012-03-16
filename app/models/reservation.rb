@@ -4,11 +4,10 @@ class Reservation < ActiveRecord::Base
  
 # after_initialize :init
 
+
 def setnil
-self.reserve_from = Date.today
-self.reserve_to = Date.today
-self.reserve_time_from = DateTime.now
-self.reserve_time_to = DateTime.now
+self.reserve_from = DateTime.now	
+self.reserve_to = DateTime.now
 end 
 
 def nilify_attributes!(except = nil)
